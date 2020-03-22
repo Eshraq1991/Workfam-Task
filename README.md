@@ -22,10 +22,10 @@ Your app is ready to be deployed!
 
 it is a small project so our patners can upload their services time slots, and manage it by retreiving, adding, updating and deleting for both type of partners
 
-. log in page => to authenticate the partner from firebase authentication
-. home page => has two options 1- register 2- login
-. register page => to register a new partner by providing its information and type
-. schedule => a schedule to manage appointments and services.
+. log in page => to authenticate the partner from firebase authentication.<br>
+. home page => has two options 1- register 2- login.<br>
+. register page => to register a new partner by providing its information and type.<br>
+. schedule => a schedule to manage appointments and services.<br>
 
 ## Technologies Used
 
