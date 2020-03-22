@@ -108,7 +108,8 @@ class Firebase {
         serviceId: appointment.serviceId,
         startDate: appointment.startDate,
         endDate: appointment.endDate,
-        userId: this.userId
+        userId: this.userId,
+        id: new Date().getTime()
       });
   }
 
