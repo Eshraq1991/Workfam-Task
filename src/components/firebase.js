@@ -115,6 +115,7 @@ class Firebase {
 
   async updateAppointment(appointment) {
     console.log(appointment);
+    console.log(appointment);
     var that = this;
     await this.db
       .collection("scheduled")

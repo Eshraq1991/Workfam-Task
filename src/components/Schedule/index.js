@@ -42,10 +42,15 @@ function Schedule(props) {
 
   let appointmentAdding = (e) => {
     firebase.addApoointment(e.appointmentData);
+    firebase.getSchedule().then((data) => {
+      setAppointments(data);
+    });
   };
+
   let appointmentUpdated = (e) => {
     firebase.updateAppointment(e.appointmentData);
   };
+
   let appointmentDeleted = (e) => {
     firebase.deleteAppointment(e.appointmentData);
   };
