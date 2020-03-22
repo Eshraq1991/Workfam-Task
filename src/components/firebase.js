@@ -19,7 +19,6 @@ class Firebase {
     this.auth = app.auth();
     this.db = app.firestore();
     this.userId = null;
-    // this.logout();
   }
 
   async login(email, password) {
@@ -97,6 +96,55 @@ class Firebase {
           ele.endDate = ele.endDate.toDate();
         });
         return data;
+      });
+  }
+
+  async addApoointment(appointment) {
+    await app
+      .firestore()
+      .collection("scheduled")
+      .add({
+        text: appointment.text,
+        serviceId: appointment.serviceId,
+        startDate: appointment.startDate,
+        endDate: appointment.endDate,
+        userId: this.userId
+      });
+  }
+
+  async updateAppointment(appointment) {
+    var that = this;
+    await this.db
+      .collection("scheduled")
+      .where("id", "==", appointment.id)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach(function(doc) {
+          that.db
+            .collection("scheduled")
+            .doc(doc.id)
+            .update({
+              text: appointment.text,
+              startDate: appointment.startDate,
+              endDate: appointment.endDate
+            });
+        });
+      });
+  }
+
+  async deleteAppointment(appointment) {
+    var that = this;
+    await this.db
+      .collection("scheduled")
+      .where("id", "==", appointment.id)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach(function(doc) {
+          that.db
+            .collection("scheduled")
+            .doc(doc.id)
+            .delete();
+        });
       });
   }
 

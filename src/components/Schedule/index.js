@@ -40,6 +40,16 @@ function Schedule(props) {
   const [services, setServices] = useState([]);
   const [appointments, setAppointments] = useState([]);
 
+  let appointmentAdding = (e) => {
+    firebase.addApoointment(e.appointmentData);
+  };
+  let appointmentUpdated = (e) => {
+    firebase.updateAppointment(e.appointmentData);
+  };
+  let appointmentDeleted = (e) => {
+    firebase.deleteAppointment(e.appointmentData);
+  };
+
   useEffect(
     () => {
       firebase.getSchedule().then((data) => {
@@ -68,6 +78,9 @@ function Schedule(props) {
         window.localStorage.getItem("type") === "2" ? true : false
       }
       endDayHour={18}
+      onAppointmentAdding={appointmentAdding}
+      onAppointmentUpdated={appointmentUpdated}
+      onAppointmentDeleted={appointmentDeleted}
     >
       <Resource
         label="Service"
